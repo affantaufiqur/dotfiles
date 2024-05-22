@@ -126,13 +126,6 @@ function Get-GitFetchAll() {
 }
 alias gfa="Get-GitFetchAll"
 
-function Get-GitPushWithBranch() {
-  local Origin="${1:-origin}"
-  local Branch="$2"
-  git push -u "$Origin" "$Branch"
-}
-alias gpush="Get-GitPushWithBranch"
-
 function Get-GitBranchList() {
   git branch -a -l
 }
