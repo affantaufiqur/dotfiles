@@ -57,7 +57,105 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$HOME/.local/bin:$PATH
 
 autoload -U compinit && compinit
-eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
+function Get-GitStatus() {
+  git status -sb
+}
+alias gs="Get-GitStatus"
+
+function Get-GitCheckoutNewBranch() {
+  git checkout -b "$@"
+}
+alias gco="Get-GitCheckoutNewBranch"
+
+function Get-GitCheckoutBranch() {
+  git checkout "$@"
+}
+alias gcb="Get-GitCheckoutBranch"
+
+function Get-GitWorktreeAdd() {
+  local Path="$1"
+  local Branch="$2"
+  git worktree add "$Path" "$Branch"
+}
+alias gwt="Get-GitWorktreeAdd"
+
+function git_worktree_create_branch() {
+  local Path="$1"
+  local branchName="${Path##*/}"
+  git worktree add -b "$branchName" "$Path"
+  local untrackedFiles=$(git ls-files --others --directory)
+
+  # Split the output into lines
+  local -a untrackedFileArray=("${(f)untrackedFiles}")
+
+  for file in "${untrackedFileArray[@]}"; do
+    local sourcePath="$(realpath "$file")"
+    local destinationPath="$Path/$file"
+
+    if [ -d "$sourcePath" ]; then
+      if [ ! -d "$destinationPath" ]; then
+        mkdir -p "$destinationPath"
+      fi
+    else
+      cp -f "$sourcePath" "$destinationPath"
+    fi
+  done
+
+  cd "$Path"
+}
+alias gwtb="git_worktree_create_branch"
+
+function Get-GitWorktreeList() {
+  git worktree list
+}
+alias gwl="Get-GitWorktreeList"
+
+function Get-GitWorktreeRemove() {
+  local Path="$1"
+  local branchName="${Path##*/}"
+  git worktree remove "$Path"
+  print "Worktree removed"
+  git branch -D "$branchName"
+}
+alias gwr="Get-GitWorktreeRemove"
+
+function Get-GitFetchAll() {
+  git fetch -a
+}
+alias gfa="Get-GitFetchAll"
+
+function Get-GitPushWithBranch() {
+  local Origin="${1:-origin}"
+  local Branch="$2"
+  git push -u "$Origin" "$Branch"
+}
+alias gpush="Get-GitPushWithBranch"
+
+function Get-GitBranchList() {
+  git branch -a -l
+}
+alias gbl="Get-GitBranchList"
+
+function Get-GitPull() {
+  local Branch="$1"
+  git pull origin "$Branch"
+}
+alias gpull="Get-GitPull"
+
+function Get-GitAddCommit() {
+  local Message="$1"
+  git add .
+  git commit -m "$Message"
+}
+alias gc="Get-GitAddCommit"
+
+function Get-GitBranchDeleteForce() {
+  local Branch="$1"
+  git branch -D "$Branch"
+}
+alias gbd="Get-GitBranchDeleteForce"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
