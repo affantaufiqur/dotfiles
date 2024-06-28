@@ -145,5 +145,23 @@ function Get-GitBranchDeleteForce() {
 }
 alias gbd="Get-GitBranchDeleteForce"
 
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# pnpm
+export PNPM_HOME="/home/ikan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/home/ikan/.bun/_bun" ] && source "/home/ikan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
