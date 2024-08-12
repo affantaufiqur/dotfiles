@@ -159,6 +159,17 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# exercism
+export PATH=~/bin:$PATH
+
+#qrc
+export PATH=$PATH:/home/ikan/code/qrc/target/release
+
+function copilot() {
+  gh copilot explain $1
+}
+alias copilot="copilot"
+
 # bun completions
 [ -s "/home/ikan/.bun/_bun" ] && source "/home/ikan/.bun/_bun"
 
