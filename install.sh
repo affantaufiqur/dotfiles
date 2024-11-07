@@ -1,5 +1,27 @@
 #!/bin/sh
 
+set -e
+
+detect_package_manager() {
+  if [ -x "$(command -v dnf)" ]; then
+    PKG_MANAGER="dnf"
+    PKG_INSTALL="sudo dnf install -y"
+    PKG_UPDATE="sudo dnf update -y"
+  elif [ -x "$(command -v pacman)"] then
+    PKG_MANAGER="pacman"
+    PKG_INSTALL="sudo pacman -S --noconfirm"
+    PKG_UPDATE="sudo pacman -Syu"
+  else
+    echo "Error: Unsupported package manager."
+    exit 1
+  fi
+  echo "Package manager: $PKG_MANAGER"
+}
+
+get_package_name() {
+  local generic_name="$1"
+}
+
 # Set the package manager to use
 PKG_MANAGER="dnf"
 
