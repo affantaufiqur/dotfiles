@@ -51,6 +51,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$HOME/.local/bin:$PATH
 
+if [[ -d /opt/homebrew/bin ]]; then
+  export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
+elif [[ -d /usr/local/bin ]]; then
+  export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+fi
+
 autoload -U compinit && compinit
 eval "$(zoxide init zsh)"
 
@@ -184,6 +190,12 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+# homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
+export INFOPATH="/opt/homebrew/share/info:$INFOPATH"
+
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -192,3 +204,10 @@ fi
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/ikan/.opam/opam-init/init.zsh' ]] || source '/home/ikan/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+# fnm
+FNM_PATH="/Users/affan/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/affan/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
