@@ -9,6 +9,6 @@ function copilot() {
   gh copilot explain "$1"
 }
 
-eval "$(zoxide init zsh)"
+# zoxide is now managed by zinit in 02-plugin.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
