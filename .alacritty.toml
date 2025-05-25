@@ -1,6 +1,12 @@
 [window]
-opacity = 0.8
+opacity = 0.9
 padding = { x = 8, y = 12 }
+dynamic_padding = true
+blur = false
+startup_mode = "Maximized"
 
 [font.normal]
-family = "MonaspiceNe Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
+
+[terminal]
+shell = "/opt/homebrew/bin/fish"
