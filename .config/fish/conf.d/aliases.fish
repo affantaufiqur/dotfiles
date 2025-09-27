@@ -19,4 +19,3 @@ alias copilot="copilot"
 alias tml="tmux-list"
 alias tma="tmux-attach"
 alias tmd="tmux-detach"
-

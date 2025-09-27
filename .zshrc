@@ -14,3 +14,9 @@ if [[ -d $ZSHRC_D ]]; then
     [[ -r $f ]] && source "$f"
   done
 fi
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+. "$HOME/.limbo/env"

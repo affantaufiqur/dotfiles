@@ -54,12 +54,7 @@ else if test -d $fnm_macos
     fnm env | source
 end
 
-# ASDF shims
-if set -q ASDF_DATA_DIR
-    fish_add_path -p "$ASDF_DATA_DIR/shims"
-else
-    fish_add_path -p "$HOME/.asdf/shims"
-end
+set -gx PATH $HOME/.local/share/uv/python $PATH
 
 # Additional paths
 fish_add_path -a "$HOME/bin"
@@ -80,6 +75,11 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+
+# Cargo
+set -x CARGO_HOME $HOME/.cargo
+
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.

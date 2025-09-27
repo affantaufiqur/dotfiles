@@ -1,6 +1,6 @@
-theme = Calamity
+theme =  Oxocarbon
 window-padding-x = 12
 window-padding-y = 12
-background-opacity = 0.89
+background-opacity = 1
 background-blur = true
-font-family = "Monaspace Krypton"
+font-family = "Iosevka Term"
