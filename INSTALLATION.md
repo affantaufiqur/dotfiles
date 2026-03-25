@@ -24,6 +24,7 @@
 ```
 
 **Taps used:**
+
 ```
 codecrafters-io/tap
 encoredev/tap
@@ -45,6 +46,7 @@ withgraphite/tap
 ### Shell Setup
 
 **Fish Shell** (primary shell):
+
 ```bash
 brew install fish
 # Add to /etc/shells: echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
@@ -52,6 +54,7 @@ brew install fish
 ```
 
 **Zsh** (backup):
+
 ```bash
 brew install bash  # Updated bash
 # macOS ships with zsh
@@ -62,6 +65,7 @@ brew install bash  # Updated bash
 ## Terminal & CLI Tools
 
 ### Essential CLI Tools
+
 ```bash
 brew install \
   starship \
@@ -85,32 +89,38 @@ brew install \
 ```
 
 **Atuin** (shell history):
+
 ```bash
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 # Or: brew install atuin
 ```
 
 ### Terminal Multiplexers
+
 ```bash
 brew install tmux zellij
 ```
 
 **Tmux Plugin Manager (TPM):**
+
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 **Tmux plugins used:**
+
 - tmux-plugins/tmux-sensible
 - thewtex/tmux-mem-cpu-load
 - tmux-workspace-usage (custom)
 
 ### File Managers
+
 ```bash
 brew install yazi
 ```
 
 ### Database Tools
+
 ```bash
 brew install \
   lazysql \
@@ -122,6 +132,7 @@ brew install \
 ```
 
 ### Modern Replacements
+
 ```bash
 brew install \
   television  # fzf alternative (tv) \
@@ -146,16 +157,19 @@ brew install --cask \
 ### Node.js Ecosystem
 
 **Node via Homebrew:**
+
 ```bash
 brew install node pnpm yarn
 ```
 
 **Bun (preferred runtime):**
+
 ```bash
 curl -fsSL https://bun.sh/install | bash
 ```
 
 **Global npm packages** (install with `npm i -g`):
+
 ```
 @anthropic-ai/claude-code
 @google/gemini-cli
@@ -174,6 +188,7 @@ typescript
 ```
 
 **Global Bun packages** (install with `bun add -g`):
+
 ```
 @anthropic-ai/claude-code
 @oh-my-pi/pi-coding-agent
@@ -183,11 +198,13 @@ typescript
 ### Python Ecosystem
 
 **uv (preferred Python manager):**
+
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 **uv tools installed:**
+
 ```bash
 uv tool install aider-chat
 uv tool install kimi-cli
@@ -196,6 +213,7 @@ uv tool install ruff
 ```
 
 **Poetry** (legacy):
+
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
@@ -207,6 +225,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 **Cargo tools:**
+
 ```bash
 cargo install  # (none currently - using brew alternatives)
 ```
@@ -218,6 +237,7 @@ brew install go golang-migrate
 ```
 
 **Go tools:**
+
 ```bash
 go install golang.org/x/tools/gopls@latest
 go install honnef.co/go/tools/cmd/staticcheck@latest
@@ -236,6 +256,7 @@ brew install gleam
 ```
 
 ### Other Languages
+
 ```bash
 brew install \
   lua \
@@ -258,18 +279,12 @@ brew install neovim
 
 **Tree-sitter:** Included with nvim
 
-### VS Code Alternatives
-
-```bash
-brew install --cask \
-  windsurf  # Codeium's editor
-```
-
 ---
 
 ## AI Coding Assistants
 
 ### CLI Agents
+
 ```bash
 # Claude Code (npm)
 npm install -g @anthropic-ai/claude-code
@@ -300,13 +315,10 @@ uv tool install kimi-cli
 ```
 
 ### Desktop Apps
-```bash
-brew install --cask codex  # OpenAI Codex desktop app
-```
 
 ### Other AI Tools
+
 ```bash
-npm install -g agent-browser  # Browser automation
 npm install -g playwriter      # Playwright browser control
 ```
 
@@ -314,19 +326,8 @@ npm install -g playwriter      # Playwright browser control
 
 ## Cloud & DevOps
 
-### AWS
-```bash
-brew install awscli
-```
-
-### Infrastructure
-```bash
-brew install \
-  pulumi \
-  terraform  # if needed
-```
-
 ### Databases & Services
+
 ```bash
 brew install \
   cloudflared \
@@ -336,6 +337,7 @@ brew install \
 ```
 
 ### Container/VM Tools
+
 ```bash
 brew install --cask orbstack  # Docker alternative
 ```
@@ -354,6 +356,7 @@ brew install --cask \
 ```
 
 **SketchyBar** (optional status bar):
+
 ```bash
 brew install sketchybar
 ```
@@ -378,6 +381,7 @@ brew install --cask \
 ## Utilities
 
 ### macOS Apps
+
 ```bash
 brew install --cask \
   1password-cli \
@@ -394,6 +398,7 @@ brew install --cask \
 ```
 
 ### CLI Utilities
+
 ```bash
 brew install \
   ffmpeg \
@@ -406,7 +411,7 @@ brew install \
   gel-cli \
   graphite \
   git-who \
-  jj  # Jujutsu VCS
+  jj
 ```
 
 ---
@@ -414,25 +419,15 @@ brew install \
 ## Other Standalone Tools
 
 ### Vite+ (custom tool)
+
 ```bash
-# Installed via custom installer
-# See: ~/.vite-plus/
+curl -fsSL https://vite.plus | bash
 ```
 
 ### OpenCode
-```bash
-# Installed at ~/.opencode/bin/opencode
-```
 
-### Kaku (shell integration)
 ```bash
-# Installed at ~/.config/kaku/
-```
-
-### Turso CLI
-```bash
-# Installed via brew: brew install turso
-# Also: ~/.limbo/ for turso CLI updates
+curl -fsSL https://opencode.ai/install | bash
 ```
 
 ---
@@ -441,14 +436,14 @@ brew install \
 
 ```bash
 # 1. Clone dotfiles
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/affantaufiqur/dotfiles.git ~/dotfiles
 
 # 2. Install stow
 brew install stow
 
 # 3. Stow configurations
 cd ~/dotfiles
-stow .  # or individual packages: stow fish tmux nvim ...
+stow .
 ```
 
 ---
@@ -467,7 +462,6 @@ After setup, verify these work:
 - [ ] `go version`
 - [ ] `claude --version`
 - [ ] `codex --version`
-- [ ] `atuin --version`
 - [ ] `starship --version`
 - [ ] Ghostty/Alacritty launch
 - [ ] Tmux plugins load (`prefix + I`)
@@ -476,7 +470,7 @@ After setup, verify these work:
 
 ## Notes
 
-- **Node version management**: You're using Homebrew's node directly (no fnm/nvm currently)
+- **Node version management**: You're using Homebrew's node directly
 - **Python**: Using `uv` exclusively (no pyenv)
 - **PostgreSQL**: Using Homebrew's postgresql@18 (not Postgres.app)
 - **Shell**: Fish is primary, with Zsh as backup
@@ -484,4 +478,4 @@ After setup, verify these work:
 
 ---
 
-*Last updated: 2026-03-25*
+_Last updated: 2026-03-25_
