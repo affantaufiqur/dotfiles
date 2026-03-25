@@ -1,12 +1,3 @@
-# NVM setup
-set -x NVM_DIR "$HOME/.nvm"
-if test -s "$NVM_DIR/nvm.sh"
-    # NVM needs bash compatibility wrapper
-    function nvm
-        bass source "$NVM_DIR/nvm.sh" --no-use ';' nvm $argv
-    end
-end
-
 # PNPM setup
 set -x PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path -p "$PNPM_HOME"
@@ -35,24 +26,15 @@ else if test -d /usr/local/bin
     fish_add_path -a /usr/local/bin /usr/local/sbin
 end
 
-# Postgres.app on macOS
-fish_add_path -a "/Applications/Postgres.app/Contents/Versions/latest/bin"
+# Postgres.app on macOS (removed, using brew instead)
+# fish_add_path -a "/Applications/Postgres.app/Contents/Versions/latest/bin"
+
+# PostgreSQL 18 from Homebrew
+fish_add_path -a "/opt/homebrew/opt/postgresql@18/bin"
 
 # Bun setup
 set -x BUN_INSTALL "$HOME/.bun"
 fish_add_path -a "$BUN_INSTALL/bin"
-
-# fnm setup (Linux and macOS)
-set -l fnm_linux "$HOME/.local/share/fnm"
-set -l fnm_macos "$HOME/Library/Application Support/fnm"
-
-if test -d $fnm_linux
-    fish_add_path -a "$fnm_linux"
-    fnm env | source
-else if test -d $fnm_macos
-    fish_add_path -a "$fnm_macos"
-    fnm env | source
-end
 
 set -gx PATH $HOME/.local/share/uv/python $PATH
 
@@ -84,3 +66,15 @@ set -gx HOMEBREW_NO_AUTO_UPDATE 1
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# Added by Windsurf
+fish_add_path /Users/affan/.codeium/windsurf/bin
+
+# opencode
+fish_add_path /Users/affan/.opencode/bin
+
+# Tmux work alias
+alias tmux-work="$HOME/dotfiles/.local/bin/tmux-work"
+
+# Vite+ bin (https://viteplus.dev)
+source "$HOME/.vite-plus/env.fish"

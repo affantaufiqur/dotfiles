@@ -3,5 +3,4 @@ window-padding-x = 12
 window-padding-y = 12
 background-opacity = 1
 background-blur = true
-font-family = "Iosevka"
-keybind = shift+enter=text:\x1b\r
+font-family = "Myna"
