@@ -78,3 +78,42 @@ alias tmux-work="$HOME/dotfiles/.local/bin/tmux-work"
 
 # Vite+ bin (https://viteplus.dev)
 source "$HOME/.vite-plus/env.fish"
+
+# pi - force a direct vite-plus managed Node >= 22 (ignores project .node-version)
+function __pi_vite_node
+    set -l node_root $HOME/.vite-plus/js_runtime/node
+
+    for ver in (command ls -1 $node_root 2>/dev/null | string match -r '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -t. -k1,1nr -k2,2nr -k3,3nr)
+        set -l major (string split '.' $ver)[1]
+        if test $major -ge 22
+            set -l candidate $node_root/$ver/bin/node
+            if test -x $candidate
+                echo $candidate
+                return 0
+            end
+        end
+    end
+
+    return 1
+end
+
+# Debug helper: show Node version/path that pi will use
+function pi-node
+    set -l _pi_node (__pi_vite_node)
+    if test -z "$_pi_node"
+        echo "pi-node: no vite-plus Node >= 22 found" >&2
+        return 1
+    end
+    command $_pi_node -e 'console.log(process.version + " " + process.execPath)'
+end
+
+function pi
+    set -l _pi_node (__pi_vite_node)
+    if test -z "$_pi_node"
+        echo "pi: could not find a vite-plus Node >= 22 in $HOME/.vite-plus/js_runtime/node" >&2
+        return 1
+    end
+
+    # Call pi CLI directly with the chosen Node binary (bypasses /usr/bin/env node)
+    command $_pi_node $HOME/.npm-global/lib/node_modules/@mariozechner/pi-coding-agent/dist/cli.js $argv
+end
