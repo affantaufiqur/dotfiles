@@ -49,3 +49,14 @@ fi
 # To change: update FORGE_EDITOR or remove to use $EDITOR
 export FORGE_EDITOR="nvim"
 # <<< forge initialize <<<
+
+. "/Users/affan/.deno/env"
+
+# >>> otty shell integration >>>
+# Added by Otty — toggle in Settings > Shell > Shell Integration.
+# Inert unless launched by Otty (it sets $OTTY_SHELL_INTEGRATION).
+if [ -n "$OTTY_SHELL_INTEGRATION" ] && [ -r "$OTTY_SHELL_INTEGRATION/otty-integration.zsh" ]; then
+  . "$OTTY_SHELL_INTEGRATION/otty-integration.zsh"
+fi
+# <<< otty shell integration <<<
+source /Users/affan/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

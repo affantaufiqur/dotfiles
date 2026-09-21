@@ -15,8 +15,8 @@ style = "bright-green bold"
 [directory]
 style = "bright-blue bold"
 format = "[$path]($style)[$read_only]($read_only_style) "
-truncation_length = 3
-truncate_to_repo = true
+truncation_length = 8
+truncate_to_repo = false
 read_only = " [RO]"
 read_only_style = "bright-red"
 home_symbol = "~"

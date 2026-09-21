@@ -80,19 +80,3 @@ alias tmux-work="$HOME/dotfiles/.local/bin/tmux-work"
 source "$HOME/.vite-plus/env.fish"
 
 
-
-
-# Entire CLI shell completion
-entire completion fish | source
-
-# >>> otty shell integration >>>
-# Added by Otty — toggle in Settings > Shell > Shell Integration.
-# Inert unless launched by Otty (it sets $OTTY_SHELL_INTEGRATION).
-if test -n "$OTTY_SHELL_INTEGRATION" -a -r "$OTTY_SHELL_INTEGRATION/otty-integration.fish"
-    source "$OTTY_SHELL_INTEGRATION/otty-integration.fish"
-end
-# <<< otty shell integration <<<
-source /Users/affan/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/affan/google-cloud-sdk/path.fish.inc' ]; . '/Users/affan/google-cloud-sdk/path.fish.inc'; end
